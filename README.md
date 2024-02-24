@@ -4,7 +4,7 @@ A silly little synth project that I built with React & Vite, with tonejs for sou
 
 after cloning:
 
-pnpm install
+pnpm install &&
 pnpm run dev
 
 *** Warning!!! ***
