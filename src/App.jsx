@@ -76,7 +76,7 @@ function App() {
   return (
     <>
       <div id='app'>
-      <h1>{`Mae May's Silly Little Synthesizer`}</h1>
+      <h1>{`m y . s i l l y . l i t t l e . s y n t h e s i z e r`}</h1>
       <Oscillators oscillator={oscillator} setOscillator={setOscillator} />
       <Envelope
         attack={attack}

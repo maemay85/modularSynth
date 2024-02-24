@@ -28,6 +28,11 @@ body {
 h1 {
   text-align: center;
   align-self: center;
+  box-shadow: 0 .25rem .5rem .5rem rgb(251, 143, 161);
+  border-radius: 2rem;
+  padding: 1rem;
+  width: 70rem;
+  color: #000;
 }
 
 .volume-and-octave {
@@ -35,5 +40,5 @@ h1 {
   flex-direction: row;
   align-items: center;
   width: 30rem;
-  justify-content: start;
+  justify-content: space-around;
 }

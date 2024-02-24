@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-between;
   width: 12rem;
-  height: 5rem;
+  height: 6rem;
   border: 1px solid black;
   border-radius: 2rem;
   background: linear-gradient(to left bottom, rgb(220, 31, 31), rgb(144, 19, 19));
