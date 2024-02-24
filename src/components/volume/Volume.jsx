@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import Knob from "./knob/Knob";
+import Knob from "../knob/Knob";
 import { PropTypes } from 'prop-types'
 import { useState } from "react";
-import './Parameter.css'
+import './Volume.css'
 
-const Parameter = ({ setVolume }) => {
+const Volume = ({ setVolume }) => {
   const [value, setValue] = useState(0);
 
   useEffect(()=>{
@@ -12,7 +12,7 @@ const Parameter = ({ setVolume }) => {
   },[value, setVolume])
 
   return (
-    <div className="parameter">
+    <div className="volume">
       <Knob value={value} setValue={setValue} />
       <label>volume: {value}</label>
 
@@ -20,8 +20,8 @@ const Parameter = ({ setVolume }) => {
   );
 }
 
-Parameter.propTypes = {
+Volume.propTypes = {
   setVolume: PropTypes.func
 }
 
-export default Parameter
+export default Volume

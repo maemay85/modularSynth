@@ -1,0 +1,15 @@
+export const keyboardMap = [
+  { name: 'a', color: 'white', note: 'C4' },
+  { name: 'w', color: 'black', note: 'C#4' },
+  { name: 's', color: 'white', note: 'D4' },
+  { name: 'e', color: 'black', note: 'D#4' },
+  { name: 'd', color: 'white', note: 'E4' },
+  { name: 'f', color: 'white', note: 'F4' },
+  { name: 't', color: 'black', note: 'F#4' },
+  { name: 'g', color: 'white', note: 'G4' },
+  { name: 'y', color: 'black', note: 'G#4' },
+  { name: 'h', color: 'white', note: 'A4' },
+  { name: 'u', color: 'black', note: 'A#4' },
+  { name: 'j', color: 'white', note: 'B4' },
+  { name: 'k', color: 'white', note: 'C5' },
+]

@@ -1,0 +1,21 @@
+
+.octave {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 12rem;
+  height: 5rem;
+  border: 1px solid black;
+  border-radius: 2rem;
+  background: linear-gradient(to left bottom, rgb(220, 31, 31), rgb(144, 19, 19));
+  color: white;
+}
+
+.control-display {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}

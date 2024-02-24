@@ -1,10 +1,12 @@
 import * as Tone from 'tone'
 import { useState } from 'react'
 import './App.css'
-import Parameter from './components/Parameter'
+import Volume from './components/volume/Volume'
 import useKeypress from 'react-use-keypress'
 import Envelope from './components/envelope/Envelope'
-
+import Oscillators from './components/oscillator/Oscillators'
+import Keys from './components/keys/Keys'
+import Octave from './components/octave/Octave'
 
 function App() {
 
@@ -13,10 +15,13 @@ function App() {
   const [decay, setDecay] = useState(0);
   const [sustain, setSustain] = useState(0);
   const [release, setRelease] = useState(0)
+  const [oscillator, setOscillator] = useState('sine')
+  const [pressedKey, setPressedKey] = useState('')
+  const [octave, setOctave] = useState(4);
 
   const synth = new Tone.Synth({
     oscillator: {
-      type: 'triangle',
+      type: oscillator,
     },
     envelope: {
       attack: attack,
@@ -27,41 +32,52 @@ function App() {
     volume: volume
   }).toDestination();
 
-  useKeypress(['a','w','s','e','d','f','t','g','y','h','u','j','k'], (e)=>{
+  const keyAction = (name, note) => {
+        synth.triggerAttackRelease(`${note}`, .5)
+        setPressedKey(name)
+      }
+
+  useKeypress(['a','w','s','e','d','f','t','g','y','h','u','j','k', 'z', 'x'], (e)=>{
     switch(e.key){
-      case 'a': synth.triggerAttackRelease("C4", .5);
+      case 'a': keyAction('a', `C${octave}`);
       break;
-      case 'w': synth.triggerAttackRelease("C#4", .5);
+      case 'w': keyAction('w', `C#${octave}`);
       break;
-      case 's': synth.triggerAttackRelease("D4", .5);
+      case 's': keyAction('s', `D${octave}`);
       break;
-      case 'e': synth.triggerAttackRelease("D#4", .5);
+      case 'e': keyAction('e', `D#${octave}`);
       break;
-      case 'd': synth.triggerAttackRelease("E4", .5);
+      case 'd': keyAction('d', `E${octave}`);
       break;
-      case 'f': synth.triggerAttackRelease("F4", .5);
+      case 'f': keyAction('f', `F${octave}`);
       break;
-      case 't': synth.triggerAttackRelease("F#4", .5);
+      case 't': keyAction('t', `F#${octave}`);
       break;
-      case 'g': synth.triggerAttackRelease("G4", .5);
+      case 'g': keyAction('g', `G${octave}`);
       break;
-      case 'y': synth.triggerAttackRelease("G#4", .5);
+      case 'y': keyAction('y', `G#${octave}`);
       break;
-      case 'h': synth.triggerAttackRelease("A4", .5);
+      case 'h': keyAction('h', `A${octave}`);
       break;
-      case 'u': synth.triggerAttackRelease("A#4", .5);
+      case 'u': keyAction('u', `A#${octave}`);
       break;
-      case 'j': synth.triggerAttackRelease("B4", .5);
+      case 'j': keyAction('j', `B${octave}`);
       break;
-      case 'k': synth.triggerAttackRelease("C5", .5);
+      case 'k': keyAction('k', `C${octave + 1}`);
       break;
+      case 'z': if (octave > 2) setOctave(octave - 1);
+      break;
+      case 'x': if (octave < 5) setOctave(octave + 1);
+      break;
+      default: null;
     }
   })
 
   return (
     <>
       <div id='app'>
-      <Parameter setVolume={setVolume} />
+      <h1>{`Mae May's Silly Little Synthesizer`}</h1>
+      <Oscillators oscillator={oscillator} setOscillator={setOscillator} />
       <Envelope
         attack={attack}
         setAttack={setAttack}
@@ -72,6 +88,11 @@ function App() {
         release={release}
         setRelease={setRelease}
       />
+      <div className='volume-and-octave'>
+        <Volume setVolume={setVolume} />
+        <Octave octave={octave} />
+      </div>
+      <Keys pressedKey={pressedKey} />
       </div>
     </>
   )
