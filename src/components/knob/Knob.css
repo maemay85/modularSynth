@@ -1,0 +1,18 @@
+.knob {
+  background-color: black;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+}
+
+.arrow {
+  position: relative;
+  height: 1.5rem;
+  width: .2rem;
+  background-color: white;
+}
+
